@@ -15,7 +15,7 @@ void printToken(char token[]){
 	else if(strcmp(token,"THEN")==0)
 		printf("Then\n");
 	else if(isalpha(token[0]))
-		printf("Indent(%s)\n",token);
+		printf("Ident(%s)\n",token);
 	else if(token[0]>='0'&&token[0]<='9')
 		printf("Int(%d)\n",atoi(token));
 	else if(token[0]==':'&&strlen(token)==1)
