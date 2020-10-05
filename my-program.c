@@ -33,12 +33,12 @@ void printToken(char token[]){
 	else if(token[0]==':'&&token[1]=='=')
 		printf("Assign\n");
 }
-int main(){
+int main(int argc,char** argv){
 	FILE *fp = NULL;
-	fp = fopen("$input","r");
+	fp = fopen(argv[1],"r");
 	char str[10000];
 	char token[1000];
-	int i=0,j=0;
+	int i=0,j=0; 
 	int flag=1;
 	while(fgets(str,10000,fp)!=NULL){
 		if(flag==0)
