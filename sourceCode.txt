@@ -1,0 +1,72 @@
+ACompleteTestFileForAll
+
+Begin
+    pass0
+end
+
+Begin
+    pass1
+End
+
+BeGin
+    pass2
+EnD
+
+BEGIN
+    pass3
+END
+
+    BEGIN
+    pass4
+END
+
+BEGIN
+    FOR
+    For
+    for
+    IF
+    If
+    if
+    THEN
+    Then
+    then
+    ELSE
+    Else
+    else
+END
+
+BEGIN
+    x
+    X
+    x1
+    xyz
+    z1 z2
+END
+
+BEGIN
+    0
+    123
+    01234
+END
+
+BEGIN
+    1z
+    2y
+    3x
+END
+
+BEGIN
+    1a2b3c4d
+END
+
+BEGIN
+    ()
+    )(
+    (()
+    ))(
+    :
+    :=
+    +
+    *
+    ,
+END

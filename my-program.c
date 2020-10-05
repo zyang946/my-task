@@ -35,7 +35,7 @@ void printToken(char token[]){
 }
 int main(){
 	FILE *fp = NULL;
-	fp = fopen("$input","r");
+	fp = fopen("sourceCode.txt","r");
 	char str[10000];
 	char token[1000];
 	int i=0,j=0;
@@ -44,12 +44,14 @@ int main(){
 		if(flag==0)
 			break;
 		i=0;
-		while(str[i]!='\0'&&str[i]!='\n'){
+		while(str[i]!='\0'){
 			memset(token,sizeof(token),0);
 			j = 0; 
-			while(str[i]==' '||str[i]=='\r'||str[i]=='\t')
+			while(str[i]==' '||str[i]=='\r'||str[i]=='\t'||str[i] =='\n')
 				i++;
-			if(isalpha(str[i])){
+			if (str[i]=='\0')
+				i=i;
+			else if(isalpha(str[i])){
 				while(isalpha(str[i])||(str[i]<='9'&&str[i]>='0')){
 					token[j++] = str[i];
 					i++;
