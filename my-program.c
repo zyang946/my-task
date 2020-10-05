@@ -52,6 +52,8 @@ int main(){
 			if (str[i]=='\0')
 				i=i;
 			else if(isalpha(str[i])){
+				token[j++] = str[i];
+				i++;
 				while(isalpha(str[i])||(str[i]<='9'&&str[i]>='0')){
 					token[j++] = str[i];
 					i++;
