@@ -44,7 +44,7 @@ int main(){
 		if(flag==0)
 			break;
 		i=0;
-		while(str[i]!='\0'||str[i]!='\n'){
+		while(str[i]!='\0'&&str[i]!='\n'){
 			memset(token,sizeof(token),0);
 			j = 0; 
 			while(str[i]==' '||str[i]=='\r'||str[i]=='\t')
