@@ -88,6 +88,7 @@ int main(){
 				printf("Unknown\n");
 				break;
 			}
+			memset(str,10000,0);
 		}
 
 	}
