@@ -35,7 +35,7 @@ void printToken(char token[]){
 }
 int main(){
 	FILE *fp = NULL;
-	fp = fopen("$input","r");
+	fp = fopen($input,"r");
 	char str[10000];
 	char token[1000];
 	int i=0,j=0;
