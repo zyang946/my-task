@@ -40,7 +40,6 @@ int main(){
 	char token[1000];
 	int i=0,j=0;
 	int flag=1;
-	fgets(str,1000,fp);
 	while(fgets(str,10000,fp)!=NULL){
 		if(flag==0)
 			break;
