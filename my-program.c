@@ -43,7 +43,6 @@ int main(int argc,char** argv){
 	int i=0,j=0; 
 	int flag=1;
 	while(fgets(str,10000,fp)!=NULL){
-		printf("%s\n",str);
 		if(flag==0)
 			break;
 		i=0;
