@@ -54,7 +54,8 @@ int cmpPriority(char op){
 		now--;
 	int instack = getf(stack[now]);
 	int outstack = getg(op);
-	if(instack==-1||outstack == -1)
+	// printf("%d %d %d\n",now,instack,outstack);
+	if(instack==-1 || outstack == -1)
 		return -1;
 	else if(stack[now]=='i'&&(op=='('||op=='i'))
 		return -1;
@@ -73,13 +74,13 @@ int cmpPriority(char op){
 }
 int main(int argc ,char** argv){
 	FILE *fp = NULL;
-	fp = fopen(argv[1],"r");
+	fp = fopen("1.txt","r");
 	char str[1010];
 	fgets(str,1000,fp);
-	push('\r');
+	push('#');
 	int i=0;
 	int flag = 1;
-	while(str[i]!='\r'){
+	while(str[i]!='\n'){
 		while(cmpPriority(str[i]) == 1){
 			char op = pop();
 			if(op == '+'|| op == '*' || op == '('){
@@ -94,7 +95,7 @@ int main(int argc ,char** argv){
 				char op1 = pop();
 				char op2 = pop();
 				if((op1 == '+'||op1=='*')&&op2 == 'F'){
-					push('cF');
+					push('F');
 					printf("R\n");				
 				}
 				else{
@@ -104,10 +105,8 @@ int main(int argc ,char** argv){
 				
 			}
 			else if(op == 'i'){
-				pop();{
 					push('F');
 					printf("R\n");					
-				}
 			}
 			else if(op == ')'){
 				if(top<3){
@@ -133,6 +132,8 @@ int main(int argc ,char** argv){
 		}
 		if(flag != 1)
 			break;
+		if(str[i]=='\r')
+			break;
 		push(str[i]);
 		printf("I%c\n",str[i]);
 		i++;
@@ -146,7 +147,7 @@ int main(int argc ,char** argv){
 			return 0;
 		else
 		{
-			printf("E\n");
+			printf("RE\n");
 			return 0;
 		}
 		
