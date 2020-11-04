@@ -18,6 +18,7 @@ int getf(char op){
 			return f[4];
 		case '\r':
 			return f[5];
+		else return -1;
 	}
 }
 int getg(char op){
@@ -34,6 +35,8 @@ int getg(char op){
 			return g[4];
 		case '\r':
 			return g[5];
+		else
+			return -1;
 	}
 }
 int top=0;
@@ -44,11 +47,28 @@ void push(char op){
 char pop(){
 	return stack[--top];
 }
-int getstackpriority(){
+int cmpPriority(char op){
 	int now = top-1;
 	while(stack[now] == 'F')
 		now--;
-	return getf(stack[now]);
+	int instack = getf(stack[now]);
+	int outstack = getg(op);
+	if(instack==-1||outstack == -1)
+		return -1;
+	else if(stack[now]=='i'&&(op=='('||op=='i'))
+		return -1;
+	else if(stack[now]=='('&&op=='\r')
+		return -1;
+	else if(stack[now]==')'&&(op=='('||op=='i'))
+		return -1;
+	else if(stack[now]=='\r'&&(op==')'||op=='\r'))
+		return -1;
+	else{
+		if(instack<=outstack)
+			return 0;
+		else
+			return 1;
+	}
 }
 int main(int argc ,char** argv){
 	FILE *fp = NULL;
@@ -57,33 +77,77 @@ int main(int argc ,char** argv){
 	str = fgets(str,1000,fp);
 	push('\r');
 	int i=0;
-	bool flag = true;
-	while(str[i]!='\n'){
-		while(getfstackpriority()>getg(str[i])){
+	int flag = 1;
+	while(str[i]!='\r'){
+		while(cmpPriority(str[i]) == 1){
 			char op = pop();
-			if(op1 == '+'|| op1 == '*' || op1 == '('){
+			if(op == '+'|| op == '*' || op == '('){
 				break;
-				flag = false;
-			}
-			else if(op == '#'){
-				push('#');
-				break;
+				flag = 0;
 			}
 			else if(op == 'F'){
+				if(top<3){
+					flag = 0;
+					break;
+				}
+				char op1 = pop();
+				char op2 = pop();
+				if((op1 == '+'||op1=='*')&&op2 == 'F'){
+					push('F');
+					printf("R\n")''					
+				}
+				else{
+					flag = 0;
+					break;
+				}
 				
 			}
 			else if(op == 'i'){
-				
+				pop();{
+					push('F');
+					printf("R\n");					
+				}
 			}
 			else if(op == ')'){
-				
+				if(top<3){
+					flag = 0;
+					break;
+				}
+				char op1 = pop();
+				char op2 = pop();
+				if(op1 == 'F'&&op2=='('){
+					push('F');
+					printf("R\n");
+				}
+				else{
+					flag = 0;
+					break;
+				}
 			}
 			
 		}
-		if(flag == false)
+		if(cmpPriority(str[i])==-1){
+			flag=-1;
+			break;
+		}
+		if(flag != 1)
 			break;
 		push(str[i]);
 		printf("I%c\n",str[i]);
 		i++;
+	}
+	if(flag==0)
+		printf("RE\n");
+	else if(flag == -1)
+		printf("E\n");
+	else{
+		if(top==2&&pop()=='F')
+			return 0;
+		else
+		{
+			printf("E\n");
+			return 0;
+		}
+		
 	}
 } 
