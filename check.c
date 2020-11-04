@@ -63,7 +63,7 @@ int cmpPriority(char op){
 		return -1;
 	else if(stack[now]==')'&&(op=='('||op=='i'))
 		return -1;
-	else if(stack[now]=='#'&&(op==')'||op=='#'))
+	else if(stack[now]=='#'&&op==')')
 		return -1;
 	else{
 		if(instack<=outstack)
@@ -126,12 +126,12 @@ int main(int argc ,char** argv){
 			}
 			
 		}
-        if(str[i]=='#')
-			break;
 		if(cmpPriority(str[i])==-1){
 			flag=-1;
 			break;
 		}
+        if(str[i]=='#')
+			break;
 		if(flag != 1)
 			break;
 		push(str[i]);
