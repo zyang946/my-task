@@ -77,7 +77,7 @@ int main(int argc ,char** argv){
 	fp = fopen("1.txt","r");
 	char str[1010];
 	fgets(str,1000,fp);
-	push('#');
+	push('\r');
 	int i=0;
 	int flag = 1;
 	while(str[i]!='\n'){
