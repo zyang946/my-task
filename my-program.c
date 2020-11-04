@@ -74,7 +74,7 @@ int cmpPriority(char op){
 }
 int main(int argc ,char** argv){
 	FILE *fp = NULL;
-	fp = fopen("1.txt","r");
+	fp = fopen(argv[1],"r");
 	char str[1010];
 	fgets(str,1000,fp);
 	push('\r');
