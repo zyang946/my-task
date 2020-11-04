@@ -50,6 +50,14 @@ char pop(){
 }
 int cmpPriority(char op){
 	int now = top-1;
+	if((stack[now]=='+'||stack[now]=='*')&&(op=='+'||op=='*'||op==')'))
+		return -1;
+	else if(stack[now]=='('&&(op=='+'||op=='*'||op==')'))
+		return -1;
+	else if((stack[now]=='F'||stack[now]=='i')&&(op=='i'||op=='('))
+		return -1;
+	else if(stack[now]==')'&&(op=='i'||op=='('))
+		return -1;
 	while(stack[now] == 'F')
 		now--;
 	int instack = getf(stack[now]);

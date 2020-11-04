@@ -56,6 +56,8 @@ int cmpPriority(char op){
 		return -1;
 	else if((stack[now]=='F'||stack[now]=='i')&&(op=='i'||op=='('))
 		return -1;
+	else if(stack[now]==')'&&(op=='i'||op=='('))
+		return -1;
 	while(stack[now] == 'F')
 		now--;
 	int instack = getf(stack[now]);
