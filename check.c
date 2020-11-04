@@ -126,12 +126,12 @@ int main(int argc ,char** argv){
 			}
 			
 		}
-        if(str[i]=='#')
-			break;
 		if(cmpPriority(str[i])==-1){
 			flag=-1;
 			break;
 		}
+        if(str[i]=='#')
+			break;
 		if(flag != 1)
 			break;
 		push(str[i]);
