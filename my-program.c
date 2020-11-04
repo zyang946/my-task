@@ -18,7 +18,8 @@ int getf(char op){
 			return f[4];
 		case '\r':
 			return f[5];
-		else return -1;
+		default: 
+			return -1;
 	}
 }
 int getg(char op){
@@ -35,7 +36,7 @@ int getg(char op){
 			return g[4];
 		case '\r':
 			return g[5];
-		else
+		default:
 			return -1;
 	}
 }
@@ -74,7 +75,7 @@ int main(int argc ,char** argv){
 	FILE *fp = NULL;
 	fp = fopen(argv[1],"r");
 	char str[1010];
-	str = fgets(str,1000,fp);
+	fgets(str,1000,fp);
 	push('\r');
 	int i=0;
 	int flag = 1;
@@ -93,8 +94,8 @@ int main(int argc ,char** argv){
 				char op1 = pop();
 				char op2 = pop();
 				if((op1 == '+'||op1=='*')&&op2 == 'F'){
-					push('F');
-					printf("R\n")''					
+					push('cF');
+					printf("R\n");				
 				}
 				else{
 					flag = 0;
